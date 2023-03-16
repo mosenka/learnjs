@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .conatiner {
+                width: 80%;
+                margin: 30px auto;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            #prompt-form {
+                display: inline-block;
+                padding: 5px 5px 5px 70px;
+                width: 200px;
+                border: 1px solid black;
+                background: white url(https://en.js.cx/clipart/prompt.png) no-repeat left 5px;
+                vertical-align: middle;
+            }
+
+            #prompt-form-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9998;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                background: rgba(0, 0, 0, .6);
+            }
+
+
+
+            #prompt-form-container:before {
+                display: inline-block;
+                height: 100%;
+                content: '';
+                vertical-align: middle;
+            }
+
+            #prompt-form input[name="text"] {
+                display: block;
+                margin: 5px;
+                width: 180px;
+            }
+
+            .is-fixed {
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="conatiner">
+            Кликните на кнопку ниже
+            <br>
+            <button type="button" id="open-popup">
+                Кликнуть чтобы открыть форму
+            </button>
+
+            <div id="prompt-form-container" hidden>
+                <form id="prompt-form">
+                    <div id="prompt-message">Введите что-нибудь...
+                        <br>Пожалуйста..</div>
+                    <input name="text" type="text">
+                    <input type="submit" value="Ok">
+                    <input type="button" name="cancel" value="Отмена">
+                </form>
+            </div>
+
+        </div>
+
+
+
+        <script>
+            const buttonOpen = document.getElementById('open-popup');
+            const popup = document.getElementById('prompt-form-container');
+
+            const form = document.getElementById('prompt-form')
+
+            buttonOpen.onclick = function () {
+                popup.hidden = !popup.hidden;
+                document.body.classList.toggle('is-fixed');
+
+                if(!popup.hidden) {
+                    form.text.focus();
+                }
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                let value = form.text.value;
+                closePopup();
+                callback(value);
+            })
+
+            form.cancel.onclick = closePopup;
+
+
+            function callback(value) {
+                if(value) {
+                    alert(value);
+                }
+            }
+
+            document.onkeydown = function(e) {
+                if (e.key == 'Escape') {
+                    closePopup()
+                }
+            };
+
+
+            function closePopup() {
+                popup.hidden = true;
+                document.body.classList.remove('is-fixed');
+
+            }
+
+            let lastElem = form.elements[form.elements.length - 1];
+            let firstElem = form.elements[0];
+
+            lastElem.onkeydown = function(e) {
+                if (e.key == 'Tab' && !e.shiftKey) {
+                    firstElem.focus();
+                    return false;
+                }
+            };
+
+            firstElem.onkeydown = function(e) {
+                if (e.key == 'Tab' && e.shiftKey) {
+                    lastElem.focus();
+                    return false;
+                }
+            };
+
+
+        </script>
+    </body>
+</html>

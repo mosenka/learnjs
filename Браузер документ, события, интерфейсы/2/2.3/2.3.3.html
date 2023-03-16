@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 4px;
+            }
+            th {
+                cursor: pointer;
+            }
+            th:hover {
+                background: yellow;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table id="grid">
+            <thead>
+                <tr>
+                    <th data-type="number">Возраст</th>
+                    <th data-type="string">Имя</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>Вася</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Петя</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Женя</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Маша</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Илья</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            const table = document.getElementById('grid');
+
+            let arrRows = table.querySelectorAll('table tbody tr');
+            let tbody = table.querySelector('tbody');
+
+           tbody.append( ...Array.from(arrRows).sort(sortString) );
+
+            table.addEventListener('click', function (event) {
+                let title = event.target.dataset.type;
+
+                if(!title) return;
+
+                switch (title) {
+                    case 'string':
+                        tbody.append( ...Array.from(arrRows).sort(sortString) );
+                        break;
+                    case 'number':
+                        tbody.append( ...Array.from(arrRows).sort(sortNumber) );
+                        break;
+                }
+
+            })
+
+
+            function sortString(a, b) {
+                    return a.lastElementChild.textContent > b.lastElementChild.textContent ? 1 : -1;
+            }
+
+            function sortNumber(a, b) {
+                return a.lastElementChild.textContent - b.lastElementChild.textContent;
+            }
+
+
+        </script>
+    </body>
+</html>

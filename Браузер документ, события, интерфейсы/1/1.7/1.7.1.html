@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="elem"></div>
+
+
+
+
+        <script>
+            let elem = document.querySelector('#elem');
+            let text = 'text';
+
+            // Какие из этих 3-х команд работают одинаково?
+            // elem.append(document.createTextNode(text))
+            // elem.innerHTML = text;
+            // elem.textContent = text
+
+            // Ответ, 1 и 3 команды работают одинаково вставят текст как текст, а 2 вставит текст с тегами как элемент
+
+
+
+        </script>
+
+    </body>
+</html>

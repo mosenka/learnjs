@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .conatiner {
+                width: 80%;
+                margin: 30px 0;
+            }
+
+            #elem {
+                width: 500px;
+                height: 400px;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="conatiner">
+            <div id="elem"></div>
+        </div>
+
+
+
+        <script>
+            let elem = document.getElementById('elem');
+
+            elem.addEventListener('click', divHandler)
+
+            function divHandler() {
+                let textarea = document.createElement('textarea');
+                textarea.value = this.innerHTML;
+
+                textarea.addEventListener('blur', textareaHandler);
+                textarea.addEventListener('keydown', function (event) {
+                    if(event.key == 'Enter') {
+                        textarea.blur()
+                    }
+                })
+
+                this.replaceWith(textarea);
+                textarea.focus()
+            }
+
+            function textareaHandler(event) {
+                let content = event.target.value;
+                let div = document.createElement('div');
+                div.id = 'elem';
+                div.innerHTML = content;
+
+                div.addEventListener('click', divHandler)
+
+                this.replaceWith(div)
+            }
+
+
+        </script>
+    </body>
+</html>

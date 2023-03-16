@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let users = getUsers(['iliakan', 'remy', 'no.such.users']);
+
+        console.log(users);
+
+        async function getUsers(names) {
+            let arr = [];
+
+            for(let name of names) {
+                let obj = fetch(`https://api.github.com/users/${name}`).then(
+                    successResponse => {
+                        if (successResponse.status != 200) {
+                            return null;
+                        } else {
+                            return successResponse.json();
+                        }
+                    },
+                    failResponse => {
+                        return null;
+                    }
+                );
+                arr.push(obj);
+            }
+
+            let results = await Promise.all(arr);
+
+            return results;
+        }
+    </script>
+
+</body>
+</html>

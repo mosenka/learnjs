@@ -26,7 +26,7 @@ function Calculator() {
 
 let calc = new Calculator;
 
-console.log(calc.calculate("fff - 7"));
+console.log(calc.calculate("fff - 8"));
 
 let powerCalc = new Calculator;
 powerCalc.addMethod("*", (a, b) => a * b);

@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <style>
+            .container {
+                width: 80%;
+                margin: 30px auto;
+            }
+
+            #button {
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+            #button .icon {
+                display: inline-block;
+                color: green;
+            }
+
+            #button .icon.is-open {
+                display: none;
+            }
+
+            #button.is-open .icon {
+                display: none;
+            }
+
+            #button.is-open .icon.is-open {
+                display: inline-block;
+            }
+
+
+            #menu {
+                list-style: none;
+                display: none;
+            }
+            #menu.is-open {
+                display: block;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <button id="button">
+                <span class="icon">▶</span>
+                <span class="icon is-open">▼</span>
+                <span class="text">Сладости (нажми меня)!</span>
+            </button>
+            <ul id="menu">
+                <li>Пирожное</li>
+                <li>Пончик</li>
+                <li>Мёд</li>
+            </ul>
+        </div>
+
+
+
+        <script>
+            const button = document.getElementById('button');
+            const menu= document.getElementById('menu');
+
+            button.addEventListener('click', function (event) {
+                this.classList.toggle('is-open');
+                menu.classList.toggle('is-open');
+
+            })
+
+
+
+        </script>
+    </body>
+</html>

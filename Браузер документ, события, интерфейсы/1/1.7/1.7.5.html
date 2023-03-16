@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container"></div>
+
+
+        <script>
+            let container = document.getElementById('container');
+
+            let data = {
+                "Рыбы": {
+                    "форель": {},
+                    "лосось": {}
+                },
+
+                "Деревья": {
+                    "Огромные": {
+                        "секвойя": {},
+                        "дуб": {}
+                    },
+                    "Цветковые": {
+                        "яблоня": {},
+                        "магнолия": {}
+                    }
+                }
+            };
+
+            createTree(container, data);
+
+            function createTree(container, data) {
+               let list = createLeaves(data);
+
+                container.append(list);
+            }
+
+            function createLeaves(obj) {
+
+                if(!Object.keys(obj).length) return;
+
+                let list = document.createElement('ul');
+
+                for (const key in obj) {
+                    let li = document.createElement('li');
+                    li.textContent = key;
+
+                    let subList = createLeaves(obj[key]);
+
+                    if(subList) {
+                        li.append(subList)
+                    }
+
+                    list.append(li)
+                }
+
+                return list;
+            }
+        </script>
+
+    </body>
+</html>

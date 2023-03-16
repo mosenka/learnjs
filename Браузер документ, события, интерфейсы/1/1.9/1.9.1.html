@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <style>
+        .container {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+            border: 1px solid red;
+            min-height: 800px;
+        }
+
+        #elem {
+            width: 400px;
+            height: 300px;
+            overflow: auto;
+            border: 1px solid #000;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div id="elem">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum hic incidunt iste maiores maxime nostrum perferendis praesentium quaerat quasi rem. Consequuntur debitis dolor doloribus eligendi esse eveniet expedita maiores, omnis optio quis sit unde vel? Alias culpa dignissimos dolorum ducimus eius excepturi harum impedit in laudantium, neque odio placeat praesentium sed vel veritatis! Aliquid aspernatur consequatur cum ea eligendi esse, fuga harum obcaecati odio placeat quo reiciendis saepe sit ullam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores dolore facilis impedit, incidunt natus nemo nesciunt non odit possimus quaerat quam qui quidem reiciendis, sapiente suscipit velit! Doloribus expedita, praesentium. Dolorem facere nobis porro sequi voluptatibus! Consequuntur cumque dignissimos distinctio exercitationem expedita, fugit illo in, laborum magnam maiores nostrum, porro sint. Beatae commodi corporis cum debitis dignissimos dolor, eaque ex exercitationem harum illo maiores, modi, nemo neque odit sapiente! Assumenda dignissimos, excepturi impedit minus modi placeat possimus quae rem?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum hic incidunt iste maiores maxime nostrum perferendis praesentium quaerat quasi rem. Consequuntur debitis dolor doloribus eligendi esse eveniet expedita maiores, omnis optio quis sit unde vel? Alias culpa dignissimos dolorum ducimus eius excepturi harum impedit in laudantium, neque odio placeat praesentium sed vel veritatis! Aliquid aspernatur consequatur cum ea eligendi esse, fuga harum obcaecati odio placeat quo reiciendis saepe sit ullam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores dolore facilis impedit, incidunt natus nemo nesciunt non odit possimus quaerat quam qui quidem reiciendis, sapiente suscipit velit! Doloribus expedita, praesentium. Dolorem facere nobis porro sequi voluptatibus! Consequuntur cumque dignissimos distinctio exercitationem expedita, fugit illo in, laborum magnam maiores nostrum, porro sint. Beatae commodi corporis cum debitis dignissimos dolor, eaque ex exercitationem harum illo maiores, modi, nemo neque odit sapiente! Assumenda dignissimos, excepturi impedit minus modi placeat possimus quae rem?
+
+            </div>
+        </div>
+
+
+        <script>
+            let elem = document.getElementById('elem');
+
+            elem.scrollTop = 150;
+
+            let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+
+            console.log(scrollBottom)
+
+
+
+
+        </script>
+
+    </body>
+</html>

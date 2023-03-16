@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <style>
+        #container {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+            border: 1px solid red;
+            height: 600px;
+        }
+
+        .notification {
+            position: fixed;
+            z-index: 1000;
+            padding: 5px;
+            border: 1px solid black;
+            font-size: 20px;
+            background: white;
+            text-align: center;
+        }
+
+
+        .welcome {
+            background: #b80000;
+            color: yellow;
+        }
+
+
+
+    </style>
+    <body>
+        <div id="container">
+            <p>test text</p>
+        </div>
+
+
+
+
+        <script>
+
+            showNotification({
+                top: 10,
+                right: 10,
+                html: "Hello!",
+                className: "welcome"
+            });
+
+            function showNotification(options) {
+                let { top, right, html, className} = options;
+
+                let wrapper = document.createElement('div');
+                wrapper.classList.add(`notification`, className);
+                wrapper.innerHTML = html;
+                wrapper.style.position = 'fixed'
+                wrapper.style.top = `${top}px`;
+                wrapper.style.right = `${right}px`;
+
+                document.body.append(wrapper);
+
+                setTimeout(() => wrapper.remove(), 1500);
+
+            }
+
+        </script>
+
+    </body>
+</html>

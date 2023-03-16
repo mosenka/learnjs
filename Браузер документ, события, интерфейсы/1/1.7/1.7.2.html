@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <ol id="elem">
+            <li>Привет</li>
+            <li>Мир</li>
+        </ol>
+        <br>
+        <button onclick="clearElem()" type="button">убрать</button>
+
+
+
+
+        <script>
+            // clear()
+
+            function clearElem() {
+                console.log('clear')
+                let list = document.querySelector('#elem');
+                let arr = list.querySelectorAll('li');
+
+                for (const elem of arr) {
+                    elem.remove();
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

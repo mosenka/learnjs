@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <p id="time"></p>
+       <button type="button" id="start" onclick="clockStart()" >start</button>
+       <button type="button" id="stop" onclick="clockStop()">stop</button>
+
+
+        <script>
+           let container = document.querySelector('#time');
+
+           let getTime = (container) => {
+               let now = new Date();
+               container.innerHTML = '';
+
+               let hours = document.createElement('span');
+               hours.innerHTML = `${now.getHours()}:`;
+               hours.style.color = 'red';
+
+               let minutes = document.createElement('span');
+               minutes.innerHTML = `${addZeroBefore (now.getMinutes() )}:`;
+               minutes.style.color = 'green';
+
+               let seconds = document.createElement('span');
+               seconds.innerHTML = `${addZeroBefore(now.getSeconds())}`;
+               seconds.style.color = 'blue';
+
+               container.append(hours)
+               container.append(minutes)
+               container.append(seconds)
+           }
+
+           function addZeroBefore(number) {
+               return number < 10 ? `0${number}` : number;
+           }
+
+           let intervalId;
+
+           function clockStart() {
+               intervalId = setInterval( () => getTime(container), 1000);
+               getTime(container)
+           }
+
+           function clockStop() {
+               clearInterval(intervalId);
+           }
+        </script>
+
+    </body>
+</html>

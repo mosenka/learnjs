@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            #field {
+                position: relative;
+                width: 200px;
+                height: 150px;
+                border: 10px solid black;
+                background-color: #00FF00;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            #ball {
+                position: absolute;
+                transition: top 0.5s, left 0.5s;
+            }
+        </style>
+    </head>
+
+    <body style="height:2000px">
+        Нажмите на поле для перемещения мяча.
+        <br> Мяч не должен выходить за границы поля.
+        <div id="field">
+            <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        </div>
+
+
+        <script>
+            const field = document.getElementById('field');
+            const ball = document.getElementById('ball');
+
+            function getCoords(elem) {
+                let box = elem.getBoundingClientRect();
+
+                return {
+                    top: box.top + window.pageYOffset,
+                    right: box.right + window.pageXOffset,
+                    bottom: box.bottom + window.pageYOffset,
+                    left: box.left + window.pageXOffset
+                };
+            }
+
+            field.addEventListener('click', function (event) {
+                let coordsField = getCoords(field);
+                let [ ballWidth, ballHeight ] = [ ball.clientWidth, ball.clientHeight ];
+                let [ clientX, clientY ] = [ event.clientX, event.clientY ];
+
+                let ballPosition = {
+                    left: clientX - coordsField.left - field.clientLeft - (ballWidth / 2),
+                    top: clientY - coordsField.top - field.clientTop - (ballHeight / 2)
+                }
+
+                if(ballPosition.top < 0) ballPosition.top = 0;
+                if(ballPosition.left < 0) ballPosition.left = 0;
+
+                if(ballPosition.left + ballWidth > field.clientWidth) {
+                    ballPosition.left = field.clientWidth - ballWidth;
+                }
+
+                if (ballPosition.top + ballHeight > field.clientHeight) {
+                    ballPosition.top = field.clientHeight - ballHeight;
+                }
+
+                ball.style.left = `${ballPosition.left}px`
+                ball.style.top = `${ballPosition.top}px`
+            })
+
+
+
+
+        </script>
+    </body>
+</html>
