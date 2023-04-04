@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+<script>
+    let promise = new Promise(function(resolve, reject) {
+        resolve(1);
+
+        setTimeout(() => resolve(2), 1000);
+    });
+
+    promise.then(alert);
+
+</script>
+</body>
+</html>
+
+<!--
+Что выведет код ниже?
+
+Ответ 1, так как второй resolve будет проигнорирован
+
+-->

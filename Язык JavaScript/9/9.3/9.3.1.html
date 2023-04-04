@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+<script>
+
+    class Rabbit extends Object {
+        constructor(name) {
+            super()
+            this.name = name;
+        }
+    }
+
+    let rabbit = new Rabbit("Кроль");
+
+    console.log( rabbit.hasOwnProperty('name') )
+
+</script>
+</body>
+</html>
+
+<!--
+В чем разница?
+почему он не работает?
+
+ессли класснаследует от др класса, то в конструкторе необходимо использовать метод super(), в противном случае это приведет к ошибке
+
+-->
